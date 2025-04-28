@@ -14,7 +14,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ✅ Intentamos cargar el modelo
-model_path = "An-lisis_Sentimientos"
+model_path = "AngellyCris/An-lisis_Sentimientos"
 
 try:
     model = AutoModelForSequenceClassification.from_pretrained(model_path, use_safetensors=True)
