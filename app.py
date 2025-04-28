@@ -13,7 +13,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 📂 Ruta a la carpeta del modelo
-modelo_path = r"C:\Users\Angelly\OneDrive\Documentos\pysentimiento\content\pysentimiento\robertuito-base-uncased-save"
+modelo_path = "https://github.com/AngellyC07/An-lisis_Sentimientos/blob/main/model.safetensors"
 
 # 1️⃣ Cargar arquitectura
 model = AutoModelForSequenceClassification.from_pretrained(modelo_path, trust_remote_code=True)
