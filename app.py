@@ -13,13 +13,9 @@ st.markdown("""
 </center>
 """, unsafe_allow_html=True)
 
-# Especifica la URL de los archivos en GitHub
-model_url = 'https://github.com/TU_USUARIO/TU_REPOSITORIO/raw/main/pytorch_model.bin'
-config_url = 'https://github.com/AngellyC07/An-lisis_Sentimientos/blob/main/model.safetensors'
-
-# Cargar el modelo y el tokenizador desde GitHub
-model = AutoModelForSequenceClassification.from_pretrained(model_url)
-tokenizer = AutoTokenizer.from_pretrained(config_url)
+model_path = "https://github.com/AngellyC07/An-lisis_Sentimientos/blob/main/model.safetensors"  # Especifica la ruta del directorio que contiene el archivo .safetensors
+model = AutoModelForSequenceClassification.from_pretrained(model_path, use_safetensors=True)
+tokenizer = AutoTokenizer.from_pretrained(model_path)
 
 
 # 🔍 Instrucciones
