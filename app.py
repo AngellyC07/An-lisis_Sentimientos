@@ -13,7 +13,7 @@ st.markdown("""
 </center>
 """, unsafe_allow_html=True)
 
-model_path = "https://github.com/AngellyC07/An-lisis_Sentimientos/blob/main/model.safetensors"  # Especifica la ruta del directorio que contiene el archivo .safetensors
+model_path = "AngellyCris/An-lisis_Sentimientos"
 model = AutoModelForSequenceClassification.from_pretrained(model_path, use_safetensors=True)
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 
