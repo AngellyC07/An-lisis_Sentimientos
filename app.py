@@ -31,7 +31,7 @@ login()
 # 2. Subir el modelo
 api = HfApi()
 api.upload_folder(
-    folder_path="C:\Users\Angelly\OneDrive\Documentos\pysentimiento\content\pysentimiento\robertuito-base-uncased-save",
+    folder_path=r"C:\Users\Angelly\OneDrive\Documentos\pysentimiento\content\pysentimiento\robertuito-base-uncased-save",
     path_in_repo="",
     repo_id="AngellyCris/An-lisis_Sentimientos",
     repo_type="model",
