@@ -1,7 +1,6 @@
 import streamlit as st
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
-import safetensors
 
 # 🎯 Configuración de la página
 st.set_page_config(page_title="Evaluador PPE Inteligente", layout="wide")
@@ -14,7 +13,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 model_path = "AngellyCris/analisis_s"
-model = AutoModelForSequenceClassification.from_pretrained(model_path, use_safetensors=True)
+model = AutoModelForSequenceClassification.from_pretrained(model_path)
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 
 
