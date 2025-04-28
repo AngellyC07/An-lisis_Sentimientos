@@ -1,7 +1,7 @@
 import streamlit as st
- from transformers import AutoModelForSequenceClassification, AutoTokenizer
- import torch
- import safetensors
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+import torch
+import safetensors
  
  # 🎯 Configuración de la página
  st.set_page_config(page_title="Evaluador PPE Inteligente", layout="wide")
