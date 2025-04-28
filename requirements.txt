@@ -3,6 +3,5 @@ ultralytics
 opencv-python-headless
 Pillow
 numpy
-gTTS
 torch
 transformers
