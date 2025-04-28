@@ -1,6 +1,7 @@
 import streamlit as st
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
+import safetensors
 
 # 🎯 Configuración de la página
 st.set_page_config(page_title="Evaluador PPE Inteligente", layout="wide")
@@ -16,7 +17,7 @@ st.markdown("""
 model_path = "AngellyCris/analisis_s"
 
 try:
-    model = AutoModelForSequenceClassification.from_pretrained(model_path)
+    model = AutoModelForSequenceClassification.from_pretrained(model_path, use_safetensors=True)
     tokenizer = AutoTokenizer.from_pretrained(model_path)
 except Exception as e:
     st.error(f"⚠️ Error al cargar el modelo: {e}")
@@ -54,21 +55,22 @@ id2emotion = {
 # 🔄 Botón para analizar el texto
 if st.button("📤 Analizar Texto"):
     if texto_entrada.strip():
-        try:
-            # Tokenización y predicción
-            inputs = tokenizer(texto_entrada, return_tensors="pt", truncation=True, padding=True)
-            
-            with torch.no_grad():
-                outputs = model(**inputs)
-                logits = outputs.logits
-
-            prediccion = torch.argmax(logits, dim=-1).item()
-            emocion_predicha = id2emotion.get(prediccion, "desconocido")
-
-            # Mostrar resultado
-            st.markdown(f"<center><h4>🎭 Emoción detectada: <strong>{emocion_predicha.capitalize()}</strong></h4></center>", unsafe_allow_html=True)
-        
-        except Exception as e:
-            st.error(f"⚠️ Error durante el análisis: {e}")
+        # Tokenización y predicción
+        inputs = tokenizer(texto_entrada, return_tensors="pt", truncation=True, padding=True)
+ 
+        with torch.no_grad():
+            logits = model(**inputs).logits
+        prediccion = torch.argmax(logits, dim=-1).item()
+ 
+        # Traducir predicción a emoción
+        emocion_predicha = id2emotion.get(prediccion, "desconocido")
+ 
+        # Mostrar resultado
+        st.markdown(f"<center><h4>🎭 Emoción detectada: <strong>{emocion_predicha.capitalize()}</strong></h4></center>", unsafe_allow_html=True)
     else:
-        st.warning("⚠️ Por favor, escribe un texto para analizar.")
+        st.warning("⚠️ Por favor, escribe cómo te sientes.")
+        
+    except Exception as e:
+        st.error(f"⚠️ Error durante el análisis: {e}")
+else:
+    st.warning("⚠️ Por favor, escribe un texto para analizar.")
