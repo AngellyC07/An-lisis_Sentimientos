@@ -21,7 +21,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_path)
 # 🔍 Instrucciones
 with st.expander("📖 ¿Cómo se usa esta herramienta?"):
     st.markdown("""
-    - 📄 Escribe un **texto** describiendo el equipo de protección personal que estás usando.
+    - 📄 Escribe un **texto** describiendo cómo te sientes.
     - 🛡️ La herramienta analizará el texto y te indicará el sentimiento.
     """)
 
