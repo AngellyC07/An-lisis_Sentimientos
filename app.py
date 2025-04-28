@@ -1,6 +1,7 @@
 import streamlit as st
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
+import safetensors
 
 # 🎯 Configuración de la página
 st.set_page_config(page_title="Evaluador PPE Inteligente", layout="wide")
@@ -12,12 +13,14 @@ st.markdown("""
 </center>
 """, unsafe_allow_html=True)
 
-# 📂 Ruta a la carpeta del modelo
-modelo_path = "https://github.com/AngellyC07/An-lisis_Sentimientos/blob/main/model.safetensors"
+# Especifica la URL de los archivos en GitHub
+model_url = 'https://github.com/TU_USUARIO/TU_REPOSITORIO/raw/main/pytorch_model.bin'
+config_url = 'https://github.com/AngellyC07/An-lisis_Sentimientos/blob/main/model.safetensors'
 
-# 1️⃣ Cargar arquitectura
-model = AutoModelForSequenceClassification.from_pretrained(modelo_path, trust_remote_code=True)
-tokenizer = AutoTokenizer.from_pretrained(modelo_path)
+# Cargar el modelo y el tokenizador desde GitHub
+model = AutoModelForSequenceClassification.from_pretrained(model_url)
+tokenizer = AutoTokenizer.from_pretrained(config_url)
+
 
 # 🔍 Instrucciones
 with st.expander("📖 ¿Cómo se usa esta herramienta?"):
