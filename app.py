@@ -55,6 +55,8 @@ if st.button("📤 Analizar Texto"):
 
         with torch.no_grad():
             logits = model(**inputs).logits
+            st.write("Logits:", logits)
+st.write("Tamaño de logits:", logits.shape)
         prediccion = torch.argmax(logits, dim=-1).item()
 
         # Traducir predicción a emoción
