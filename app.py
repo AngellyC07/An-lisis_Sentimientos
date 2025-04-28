@@ -13,7 +13,7 @@ st.markdown("""
 </center>
 """, unsafe_allow_html=True)
 
-model_path = "AngellyCris/An-lisis_Sentimientos"
+model_path = "AngellyCris/model.savetensors"
 model = AutoModelForSequenceClassification.from_pretrained(model_path, use_safetensors=True)
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 
